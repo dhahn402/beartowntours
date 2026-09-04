@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pepsi &amp; Palaces — Historic New Bern Walking Tour</title>
+<meta name="description" content="A 90-minute guided walk through historic New Bern, North Carolina — from the pharmacy counter where Pepsi-Cola was invented to the point where the Trent runs into the Neuse.">
+<meta name="theme-color" content="#e9e4d6">
+<meta property="og:title" content="Pepsi &amp; Palaces — Historic New Bern Walking Tour">
+<meta property="og:description" content="Ninety minutes on foot through North Carolina's first capital, led by people who live here.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ============ broadside frame ============ */
+  .sheet {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 46px) 90px;
+  }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0 12px;
+    font-family: var(--util);
+    font-size: 10.5px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar span:last-child { text-align: right; }
+
+  /* ============ page-load stagger ============ */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .stagger > * { animation: rise .7s cubic-bezier(.22,.68,.35,1) backwards; }
+  .stagger > *:nth-child(1) { animation-delay: .05s; }
+  .stagger > *:nth-child(2) { animation-delay: .13s; }
+  .stagger > *:nth-child(3) { animation-delay: .21s; }
+  .stagger > *:nth-child(4) { animation-delay: .29s; }
+  .stagger > *:nth-child(5) { animation-delay: .37s; }
+  .stagger > *:nth-child(6) { animation-delay: .45s; }
+
+  /* ============ masthead ============ */
+  .masthead { position: relative; padding-top: 30px; }
+  .kicker {
+    text-align: center;
+    font-family: var(--util);
+    font-size: clamp(10px, 1.5vw, 12px);
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  .masthead h1 {
+    font-size: clamp(46px, 10.4vw, 122px);
+    letter-spacing: -.025em;
+    text-align: center;
+    margin: 0;
+    line-height: .92;
+    white-space: nowrap;
+  }
+  .masthead h1 .amp {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--carmine);
+    padding: 0 .04em;
+  }
+  .subhead {
+    text-align: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(19px, 2.7vw, 29px);
+    color: var(--muted);
+    margin: 20px 0 0;
+    max-width: none;
+  }
+
+  .hero-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+    margin-top: 40px;
+  }
+  .lede {
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 40ch;
+  }
+  .lede .drop {
+    float: left;
+    font-family: var(--display);
+    font-size: 5.1em;
+    line-height: .78;
+    padding: .04em .1em 0 0;
+    color: var(--carmine);
+  }
+  .lede em { font-style: italic; }
+
+  /* ============ the seal ============ */
+  .seal { display: flex; justify-content: center; }
+  .seal svg { width: clamp(190px, 24vw, 250px); height: auto; overflow: visible; }
+  .seal .legend {
+    font-family: var(--util);
+    font-size: 11.4px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    fill: var(--ink);
+  }
+  .seal .pip { font-size: 9px; fill: var(--brass); text-anchor: middle; }
+  .seal .price {
+    font-family: var(--display);
+    font-size: 62px;
+    font-weight: 600;
+    fill: var(--carmine);
+    text-anchor: middle;
+  }
+  .seal .per {
+    font-family: var(--util);
+    font-size: 10.5px;
+    letter-spacing: .2em;
+    fill: var(--muted);
+    text-anchor: middle;
+    text-transform: uppercase;
+  }
+  .seal circle { fill: none; stroke: var(--ink); }
+
+  /* ============ vitals ledger ============ */
+  .vitals {
+    margin: 44px 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .vitals > div {
+    padding: 15px 18px 16px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .vitals > div:last-child { border-right: 0; }
+  .vitals dt {
+    font-family: var(--util);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .vitals dd {
+    margin: 7px 0 0;
+    font-family: var(--display);
+    font-size: clamp(21px, 2.5vw, 30px);
+    line-height: 1.05;
+  }
+
+  /* ============ buttons ============ */
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn {
+    font-family: var(--util);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 17px 34px;
+    text-decoration: none;
+    border: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 4px 4px 0 var(--carmine);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--carmine); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--rule);
+  }
+  .btn.ghost:hover { box-shadow: 2px 2px 0 var(--rule); }
+
+  /* ============ sections ============ */
+  section { margin-top: clamp(58px, 8vw, 92px); }
+  .sec-head { margin-bottom: 30px; }
+  .sec-head h2 {
+    font-size: clamp(32px, 4.6vw, 52px);
+    margin: 14px 0 0;
+  }
+  .sec-head .no {
+    font-family: var(--util);
+    font-size: 10.5px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--carmine);
+  }
+
+  .prose { columns: 2; column-gap: 52px; }
+  .prose p { max-width: none; break-inside: avoid; }
+  @media (max-width: 760px) { .prose { columns: 1; } }
+
+  /* ============ route ledger ============ */
+  ol.itin { list-style: none; margin: 0; padding: 0; counter-reset: stop; }
+  ol.itin li {
+    counter-increment: stop;
+    display: grid;
+    grid-template-columns: 42px 76px 1fr;
+    gap: 2px 20px;
+    padding: 17px 0 15px;
+    border-bottom: 1px dotted var(--rule);
+    align-items: baseline;
+  }
+  ol.itin li:first-child { border-top: 3px solid var(--ink); }
+  ol.itin li:last-child { border-bottom: 3px solid var(--ink); }
+  ol.itin li::before {
+    content: counter(stop, decimal-leading-zero);
+    font-family: var(--util);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .1em;
+  }
+  ol.itin .t {
+    font-family: var(--util);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--verdigris);
+  }
+  ol.itin .n {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.7vw, 31px);
+    line-height: 1.1;
+  }
+  ol.itin .w {
+    grid-column: 3;
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ============ details ============ */
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+  }
+  .cols > div { padding: 24px 24px 26px 0; border-right: 1px dotted var(--rule); }
+  .cols > div:last-child { border-right: 0; padding-right: 0; }
+  .cols h3 { font-size: 27px; margin-bottom: 14px; }
+  .cols ul { margin: 0; padding: 0; list-style: none; }
+  .cols li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 9px;
+    font-size: 17.5px;
+    line-height: 1.45;
+  }
+  .cols li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    font-size: 10px;
+    color: var(--brass);
+  }
+
+  .booking {
+    margin-top: 34px;
+    border: 1.5px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--carmine-soft);
+    padding: 28px 30px;
+    background: var(--surface);
+  }
+  .booking .label {
+    font-family: var(--util);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--carmine);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .booking h3 { font-size: 30px; margin-bottom: 10px; }
+  .reach {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 46px;
+  }
+  .reach li { display: flex; align-items: baseline; gap: 12px; }
+  .reach .how {
+    font-family: var(--util);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .reach a {
+    font-family: var(--display);
+    font-size: 25px;
+    color: var(--verdigris);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .reach a:hover { border-bottom-color: var(--verdigris); }
+  .reach-note {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 14px 0 0;
+  }
+  /* The masthead is nowrap and its clamp floor is 46px, where the title
+     measures 317px. That clears any iPhone (375px+ gives it 335px) but not
+     the narrow Androids around 320-360px, where it would run off the edge.
+     Let it keep scaling down there only; nothing 361px and up is affected. */
+  @media (max-width: 360px) {
+    .masthead h1 { font-size: clamp(34px, 12.6vw, 46px); }
+  }
+
+  @media (max-width: 620px) {
+    .reach { gap: 16px; flex-direction: column; }
+    .reach li { flex-direction: column; gap: 3px; }
+    .reach a { font-size: 22px; word-break: break-word; }
+  }
+
+  footer {
+    margin-top: 84px;
+    border-top: 3px solid var(--ink);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: var(--util);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @media (max-width: 820px) {
+    .hero-body { grid-template-columns: 1fr; }
+    .seal { order: -1; margin-bottom: 6px; }
+    .vitals { grid-template-columns: repeat(2, 1fr); }
+    .vitals > div:nth-child(2) { border-right: 0; }
+    .vitals > div:nth-child(-n+2) { border-bottom: 1px dotted var(--rule); }
+    ol.itin li { grid-template-columns: 34px 64px 1fr; gap: 2px 14px; }
+    ol.itin .w { grid-column: 3; }
+    .cols > div { border-right: 0; border-bottom: 1px dotted var(--rule); padding-right: 0; }
+    .cols > div:last-child { border-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topbar">
+    <span>Bear Town Tours &middot; Walk No. 1</span>
+    <span>New Bern · N.C.</span>
+  </div>
+  <hr class="rule-double">
+
+  <header class="masthead stagger">
+    <p class="kicker">A Guided Perambulation of North Carolina's First Capital</p>
+    <h1>Pepsi <span class="amp">&amp;</span> Palaces</h1>
+    <p class="subhead">Ninety minutes on foot, from a pharmacy counter to the river</p>
+
+    <div class="hero-body">
+      <p class="lede">
+        <span class="drop">I</span>n 1898 a New Bern pharmacist stopped calling his fountain drink
+        “Brad's Drink” and started calling it Pepsi-Cola. We begin at his counter and walk out
+        through three centuries of the town that produced him — the governor's palace that burned
+        and came back, the fire that redrew the streets in a single day, and the two rivers that
+        explain why any of it is here. <em>Led by people who actually live here.</em>
+      </p>
+
+      <div class="seal">
+        <svg viewBox="0 0 220 220" role="img" aria-label="Thirty-nine dollars per guest, guided on foot in New Bern, North Carolina">
+          <defs>
+            <path id="arcTop" d="M 26,110 A 84,84 0 0 1 194,110"></path>
+            <path id="arcBot" d="M 26,110 A 84,84 0 0 0 194,110"></path>
+          </defs>
+          <circle cx="110" cy="110" r="104" stroke-width="3"></circle>
+          <circle cx="110" cy="110" r="98" stroke-width="1"></circle>
+          <circle cx="110" cy="110" r="66" stroke-width="1"></circle>
+          <text class="legend"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">Guided on foot</textPath></text>
+          <text class="legend"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">New Bern · North Carolina</textPath></text>
+          <text class="pip" x="26" y="114">◆</text>
+          <text class="pip" x="194" y="114">◆</text>
+          <text class="price" x="110" y="122">$39</text>
+          <text class="per" x="110" y="145">per guest</text>
+        </svg>
+      </div>
+    </div>
+
+    <dl class="vitals">
+      <div><dt>Duration</dt><dd>90 minutes</dd></div>
+      <div><dt>Distance</dt><dd>1.3 miles</dd></div>
+      <div><dt>Party</dt><dd>1–8 guests</dd></div>
+      <div><dt>Terrain</dt><dd>Flat &amp; paved</dd></div>
+    </dl>
+
+    <div class="cta-row">
+      <!-- BOOKING: replace href with the live Airbnb Experience URL once approved. -->
+      <a class="btn" href="#book">Book a walk</a>
+      <a class="btn ghost" href="#itinerary">See the route</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="no">One</span>
+      <h2>What you'll actually do</h2>
+    </div>
+    <div class="prose">
+      <p>Most of what visitors learn about New Bern fits on a plaque. This is the version you'd get from a neighbor: the pharmacist who accidentally built a global brand and then went broke betting on sugar; the royal governor who spent a colony's patience on a house; the thousand buildings that burned in 1922 and the neighborhoods that never came back.</p>
+      <p>You'll walk about a mile and a quarter on flat sidewalks and stop nine times. We finish at Union Point where the Trent runs into the Neuse, with somewhere good to eat and a reason to go there.</p>
+      <p>No headsets, no scripts read off a card, no golf cart. Eight guests at most, so it stays a conversation rather than a broadcast.</p>
+    </div>
+  </section>
+
+  <section id="itinerary">
+    <div class="sec-head">
+      <span class="no">Two — Nine stops, ninety minutes</span>
+      <h2>The route</h2>
+    </div>
+    <ol class="itin">
+    <!-- ITINERARY:start -->
+      <li><span class="t">0:00</span><span class="n">The Pharmacy Counter</span><span class="w">Birthplace of Pepsi, 256 Middle St</span></li>
+      <li><span class="t">0:12</span><span class="n">The Bradham Marker</span><span class="w">Middle &amp; Pollock</span></li>
+      <li><span class="t">0:18</span><span class="n">Middle Street</span><span class="w">The 200 block</span></li>
+      <li><span class="t">0:26</span><span class="n">Christ Church</span><span class="w">Pollock Street, churchyard</span></li>
+      <li><span class="t">0:38</span><span class="n">The Baxter Clock</span><span class="w">Pollock &amp; Middle</span></li>
+      <li><span class="t">0:43</span><span class="n">Tryon Palace Grounds</span><span class="w">Exterior only — no admission included</span></li>
+      <li><span class="t">0:57</span><span class="n">Pollock Street Homes</span><span class="w">Walking east</span></li>
+      <li><span class="t">1:05</span><span class="n">The Fire Line</span><span class="w">Approaching the water</span></li>
+      <li><span class="t">1:15</span><span class="n">Where the Rivers Meet</span><span class="w">Union Point Park</span></li>
+    <!-- ITINERARY:end -->
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="no">Three</span>
+      <h2>Particulars</h2>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Included</h3>
+        <ul>
+          <li>A guide who lives in New Bern</li>
+          <li>Ninety minutes, nine stops</li>
+          <li>Where to eat afterward, and why</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Not included</h3>
+        <ul>
+          <li>Tryon Palace admission — we see the grounds, not the interior</li>
+          <li>Food and drink</li>
+          <li>Transport; everything is on foot</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Bring</h3>
+        <ul>
+          <li>Shoes you can walk a mile in</li>
+          <li>Water in summer — it gets hot</li>
+          <li>A camera; there's a good group photo halfway</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="booking" id="book">
+      <span class="label">Booking</span>
+      <h3>Not open quite yet</h3>
+      <p>Booking opens the moment our listing goes live. Until then, text or email and we'll hold you a place on one of the first walks.</p>
+      <ul class="reach">
+        <li><span class="how">Text</span><a href="sms:+12526266236">(252)&nbsp;626-6236</a></li>
+        <li><span class="how">Email</span><a href="mailto:hahntechnologiescorp@gmail.com">hahntechnologiescorp@gmail.com</a></li>
+      </ul>
+      <p class="reach-note">Texting reaches us fastest. Tell us your dates and how many are walking.</p>
+    </div>
+  </section>
+
+  <p class="fleuron" style="margin-top:70px"><span>❧</span></p>
+
+  <footer>
+    <span>Bear Town Tours &middot; New Bern, N.C.</span>
+    <span>A Bear Town Tours walk &middot; beartowntours.com</span>
+  </footer>
+
+</div>
+</body>
+</html>
